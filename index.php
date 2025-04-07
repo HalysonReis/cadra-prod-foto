@@ -8,21 +8,21 @@ if(isset($_POST['cadastrar'])){
     $email = $_POST['email'];
     $fone = $_POST['fone'];
 
-    // verificando o ARRAY  $_FILES
-    //print_r($_FILES);
-    $arquivo = $_FILES['foto'];
-    if ($arquivo['error']) die ("Falha ao enviar a foto");
-    $pasta = './uploads/fotos/';
-    $nome_foto = $arquivo['name'];
-    $novo_nome = uniqid();
-    $extensao = strtolower(pathinfo($nome_foto, PATHINFO_EXTENSION));
+    // // verificando o ARRAY  $_FILES
+    // //print_r($_FILES);
+    // $arquivo = $_FILES['foto'];
+    // if ($arquivo['error']) die ("Falha ao enviar a foto");
+    // $pasta = './uploads/fotos/';
+    // $nome_foto = $arquivo['name'];
+    // $novo_nome = uniqid();
+    // $extensao = strtolower(pathinfo($nome_foto, PATHINFO_EXTENSION));
 
-    if ($extensao != 'png' && $extensao != 'jpg') die ("Extensão do arquivo inválida");
-    $caminho = $pasta . $novo_nome . '.' . $extensao;
-    $foto = move_uploaded_file($arquivo['tmp_name'], $caminho);
+    // if ($extensao != 'png' && $extensao != 'jpg') die ("Extensão do arquivo inválida");
+    // $caminho = $pasta . $novo_nome . '.' . $extensao;
+    // $foto = move_uploaded_file($arquivo['tmp_name'], $caminho);
 
-    echo $caminho;
-    echo "<br>".$foto;
+    // echo $caminho;
+    // echo "<br>".$foto;
 
     // print_r($nome_foto);
     // echo '<br>';
@@ -34,7 +34,7 @@ if(isset($_POST['cadastrar'])){
     $objColab->nome = $nome;
     $objColab->email = $email;
     $objColab->fone = $fone;
-    $objColab->foto = $caminho;
+    // $objColab->foto = $caminho;
 
     print_r($objColab);
     $res = $objColab->cadastrar();
@@ -65,6 +65,7 @@ if(isset($_POST['cadastrar'])){
     </div>
 
     <form id="formulario" method="POST" enctype='multipart/form-data' >
+
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
         <br>
         <input type="text" id="cpf" name="cpf" placeholder="Digite seu cpf">
@@ -76,13 +77,15 @@ if(isset($_POST['cadastrar'])){
         <input type="text" id="cidade" name="cidade" placeholder="Digite seu cidade">
         <br>
         
-        <input type="file" id="foto" name="foto">
+        <!-- <input type="file" id="foto" name="foto"> -->
         <br>
         
         
         <input type="reset" name="cancelar" id="cancelar" value="cancelar">
-        <input type="submit" name="cadastrar" value="Cadastrar">
+        <input type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
     </form>
-    <script src="./js/script.js"></script>
+    <!-- <script src="./js/script.js"></script> -->
+    <!-- <script src="./js/script2.js"></script> -->
+    <script src="./js/script3.js"></script>
 </body>
 </html>

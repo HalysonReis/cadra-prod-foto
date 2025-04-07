@@ -19,7 +19,7 @@ class Colaborador{
                     'nome'=> $this->nome,
                     'email'=> $this->email,
                     'fone' => $this->fone,
-                    'foto' => $this->foto
+                    // 'foto' => $this->foto
                 ]
             );
 
