@@ -1,6 +1,6 @@
 <?php
 
-require './App/DB/Database.php';
+require_once('./App/DB/Database.php');
 
 class Colaborador{
 
@@ -31,7 +31,14 @@ class Colaborador{
         $db = new Database('colaborador');
 
         $res = $db->select($where,$order,$limit)->fetchAll(PDO::FETCH_CLASS,self::class);
-        return $res;
+        return  $res;
+    }
+    public function buscar_json($where = null,$order = null,$limit = null){
+        //instancia o banco 
+        $db = new Database('colaborador');
+
+        $res = $db->select($where,$order,$limit)->fetchAll(PDO::FETCH_ASSOC);
+        return  $res;
     }
 
     public function buscar_por_id($id){

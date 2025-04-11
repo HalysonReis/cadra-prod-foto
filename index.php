@@ -1,5 +1,5 @@
 <?php
-require './App/Entity/Colaborador.php';
+require_once('./App/Entity/Colaborador.php');
 //require './App/DB/Database.php';
 
 if(isset($_POST['cadastrar'])){
@@ -56,6 +56,22 @@ if(isset($_POST['cadastrar'])){
         #minhadiv {
             background-color: red;
         }
+
+        #form_modal {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .oculta {
+            visibility: hidden;
+        }
+
+        .chama{
+            visibility: visible;
+            background-color: red;
+        }
     </style>
 </head>
 <body>
@@ -64,9 +80,15 @@ if(isset($_POST['cadastrar'])){
         <h1 id="titulo">Cadastro de Colaboradores</h1>
     </div>
 
+    <div id="ibge">
+        <button id="buscar" class="btn_buscar">Buscar dados</button>
+    </div>
+
     <form id="formulario" method="POST" enctype='multipart/form-data' >
 
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+        <br>
+        <span id="text"></span>
         <br>
         <input type="text" id="cpf" name="cpf" placeholder="Digite seu cpf">
         <br>
@@ -84,8 +106,24 @@ if(isset($_POST['cadastrar'])){
         <input type="reset" name="cancelar" id="cancelar" value="cancelar">
         <input type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
     </form>
+
+    <table id="table">
+
+    </table>
+
+    <dialog open id="modal" class="oculta">
+        <form method="dialog" id="form_modal">
+            <section>
+                <p>Cadastrado com sucesso!!</p>
+            </section>
+            <section>
+                <button type="submit">OK</button>
+            </section>
+        </form>
+    </dialog>
     <!-- <script src="./js/script.js"></script> -->
     <!-- <script src="./js/script2.js"></script> -->
-    <script src="./js/script3.js"></script>
+    <!-- <script src="./js/script3.js"></script> -->
+    <script src="./js/jsonBD.js"></script>
 </body>
 </html>
