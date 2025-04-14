@@ -1,49 +1,5 @@
 <?php
-require_once('./App/Entity/Colaborador.php');
-//require './App/DB/Database.php';
-
-if(isset($_POST['cadastrar'])){
-
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $fone = $_POST['fone'];
-
-    // // verificando o ARRAY  $_FILES
-    // //print_r($_FILES);
-    // $arquivo = $_FILES['foto'];
-    // if ($arquivo['error']) die ("Falha ao enviar a foto");
-    // $pasta = './uploads/fotos/';
-    // $nome_foto = $arquivo['name'];
-    // $novo_nome = uniqid();
-    // $extensao = strtolower(pathinfo($nome_foto, PATHINFO_EXTENSION));
-
-    // if ($extensao != 'png' && $extensao != 'jpg') die ("Extensão do arquivo inválida");
-    // $caminho = $pasta . $novo_nome . '.' . $extensao;
-    // $foto = move_uploaded_file($arquivo['tmp_name'], $caminho);
-
-    // echo $caminho;
-    // echo "<br>".$foto;
-
-    // print_r($nome_foto);
-    // echo '<br>';
-    // echo $novo_nome;
-    // echo '<br>';
-    // echo "EXTENSAO DO ARQUiVO: " .$extensao;
-
-    $objColab = new Colaborador();
-    $objColab->nome = $nome;
-    $objColab->email = $email;
-    $objColab->fone = $fone;
-    // $objColab->foto = $caminho;
-
-    print_r($objColab);
-    $res = $objColab->cadastrar();
-    if($res){
-        echo '<script> alert("Cadastrado com sucesso!") </script>';
-    }else{
-        echo '<script> alert("Error!") </script>';
-    }
-}
+//include './actions/cadastrar_categoria.php'
 
 ?>
 <!DOCTYPE html>
@@ -53,6 +9,28 @@ if(isset($_POST['cadastrar'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .conteiner {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0px;
+        }
+
+        .form_categoria{
+            padding: 20px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .modal-confirma {
+            position: absolute;
+            z-index: 3;
+            background-color: red;
+        }
+
         #minhadiv {
             background-color: red;
         }
@@ -70,7 +48,7 @@ if(isset($_POST['cadastrar'])){
 
         .chama{
             visibility: visible;
-            background-color: red;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -80,8 +58,13 @@ if(isset($_POST['cadastrar'])){
         <h1 id="titulo">Cadastro de Colaboradores</h1>
     </div>
 
-    <div id="ibge">
-        <button id="buscar" class="btn_buscar">Buscar dados</button>
+    <div class="conteiner">
+        <div id="ibge">
+            <button id="buscar" class="btn_buscar">Buscar dados</button>
+        </div>
+        <div id="ibge">
+            <button id="categoria" class="btn_cadastrar">Cadastrar categoria</button>
+        </div>
     </div>
 
     <form id="formulario" method="POST" enctype='multipart/form-data' >
@@ -121,9 +104,14 @@ if(isset($_POST['cadastrar'])){
             </section>
         </form>
     </dialog>
+
+    <?php include './modal_categoia.html'; ?>
+
+
     <!-- <script src="./js/script.js"></script> -->
     <!-- <script src="./js/script2.js"></script> -->
     <!-- <script src="./js/script3.js"></script> -->
     <script src="./js/jsonBD.js"></script>
+    <script src="./js/cadastro-modal.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-require './App/DB/Database.php';
+require_once( '../App/DB/Database.php');
 
 class Produto{
 
