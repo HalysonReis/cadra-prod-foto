@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 
     if(count($array_error) > 0){
-        $array_error['status'] = 200;
+        $array_error['error'] = TRUE;
         $response = $array_error;
         echo json_encode($response);
 
@@ -39,7 +39,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $obj->promo = $promo;
 
         $res = $obj->cadastrar();
-        $array_error['status'] = 200;
+
+        $array_error['error'] = FALSE;
 
         $response = $array_error;
         echo json_encode($response);

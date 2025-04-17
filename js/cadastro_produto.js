@@ -15,11 +15,10 @@ cadastrar.addEventListener('click', async function (event){
     });
     let response = await dados_php.json()
 
-    if(response.length <= 1){
+    if(response['error'] == false){
         const modal = document.getElementById('modal')
         modal.classList.remove('oculta')
         modal.classList.add('chama')
-        console.log('foi')
     }
     else{
         error = ''
